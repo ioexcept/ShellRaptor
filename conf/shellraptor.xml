@@ -1,19 +1,19 @@
 <raptor>
         <default>
-          <driver>com.mysql.jdbc.Driver</driver>
-          <url>jdbc:mysql://donuts:3306/perldemo</url>
-          <username>perluser</username>
-          <password>perlpass</password>
+          <driver>org.postgresql.Driver</driver>
+          <url>jdbc:postgresql://localhost:5432/geeroceries</url>
+          <username>geeroceries</username>
+          <password>hdtcgsf0</password>
           <maxrows>-1</maxrows>
         </default>
         
-        <quartztest>
+        <mysql>
           <driver>com.mysql.jdbc.Driver</driver>
-          <url>jdbc:mysql://donuts/quartztest</url>
-          <username>quartzpoc</username>
-          <password>quartzpass</password>
+          <url>jdbc:mysql://localhost/geeroceries</url>
+          <username>geeroceries</username>
+          <password>hdtcgsf0</password>
           <maxrows>-1</maxrows>
-        </quartztest>
+        </mysql>
 </raptor>
 
 <!-- 

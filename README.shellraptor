@@ -1,0 +1,79 @@
+ShellRaptor is a command line SQL utility.  It is modeled after the mysql interface
+and provides (or will soon provide) all the working commands needed to support any class
+of developer.  
+Presently provide users with a java based ( will run on any java compatible system that 
+has a JRE/JDK installed) command line SQL utility/editor that supports any database that 
+you can provide a TYPE-4 JDBC driver for.
+
+You will need to provide your TYPE-4 Jar driver. Simply copy it into $RAPTOR_HOME/lib and 
+start the application. There is no need to modify the CLASSPATH, it will be automagically
+updated at runimte by the ShellRaptor classpath loader.
+
+To start the utility use either:
+java -jar shellRaptor.jar
+-or-
+java -cp shellRaptor com.gee5.tools.shellraptor.ShellRaptor
+
+
+***** RUNTIME COMMANDS *****
+ShellRaptor (2005): Command Line SQL Utility
+Base Arguements
+         -s     <saveOutputTo_File>
+         -mx    <maximumRowCountResults>
+         -test  (-only- test connectivity)
+         -h     (this help screen)a
+Connection Arguements
+1) no arguements uses default config file conf\dbconf.xml
+2) External Config File
+        -c      <config file>
+3) Command Line Values
+        -d      <driver>
+        -u      <connection-url>
+        -l      <username>
+        -p      <password
+ *** COMMENTS ***
+ It is possible to use a config and override the values
+ of that file by supplying driver, url..etc values.
+ For example;
+ java -jar ShellRaptor.jar -c myconf.xml -d newest.Version.ofSomeDriver.jar
+
+**************** HELP COMMANDS ****************
+        help                    Available commands
+        open <alias>            Open a new connection based on dbconfig entry
+        list-alias              Show the list of available aliases in the dbconfig file
+        list-tables             List database tables
+        list-dbinfo             List database information
+        list-index <table>      Explain the index plan for the supplied table
+        desc <table>            Describe the table schema
+        select ...              basic sql commands
+        drop <table>            Drop the given table
+        create <table...>       Create the given table
+        @<file>                 Open and execute the listed file
+        #<file> <sql>           save sql results to...
+        #<file.out> @<file.in>  [reversable] Read in and write to..
+        set maxrowcount <#>     Set the max @ of return results (must be supported by your supplied driver)
+        exit                    Exit the Application
+ 
+the program supports -multiple databases on demand-.  
+This is done by taking advantage of the 'open <alias>' command.
+        
+Quick tutorial on multiple database support.  Once you have connected from the shell editor execute
+>> list-alias;
+Alias [default]         U RL [jdbc:mysql://raptorDB/stattracker]
+Alias [raptor-test]  URL [jdbc:oracle:thin:@raptorDB:1521:rtest]
+Alias [raptor-prod]   URL [jdbc:oracle:thin:@raptorDB:1521:rprod]
+Alias [ms-test]      URL [jdbc:microsoft:sqlserver://raptorDB:1433;DatabaseName=raptor]
+-------------------------------------------
+{Runtime: [0 seconds]}
+
+>> open raptor-test;
+OPEN CONNECTION [raptor-test]
+Connectvity Info:
+Driver [oracle.jdbc.OracleDriver]
+URL [jdbc:oracle:thin:@raptorDB:1521:rtest]
+Username [ioexcept]
+Password [********]
+Max Rows [-1]
+
+[raptor-test] Connection status [Open]
+>>

@@ -57,6 +57,7 @@
 		</dependency>
 
 <!--  Only need if you plan on running the program inside an editor -->
+<!--
 		<dependency>
 			<groupId>oracle</groupId>
 			<artifactId>ojdbc6</artifactId>
@@ -69,6 +70,7 @@
 			<version>5.1.21</version>
 			<scope>provided</scope>
 		</dependency>
+-->
 	</dependencies>
 
 	<url>http://sourceforge.net/projects/shellraptor/</url>
